@@ -7,9 +7,12 @@ def load_data():
     return df
 
 def clean_data(df):
-    df = df.fillna('')
+    
+    # data already clean from duplicates
+    # we found empty cells only in total_bedrooms column so i see that need to replace empty cells with the median value to ensure that the dtype stays float64 and not become an ibject when try to fill them with '' empty strings
+    df['total_bedrooms'] = df['total_bedrooms'].fillna(df['total_bedrooms'].median())
+    
+    # no need to clean data from wrong format or data it looks good
     return df
 
-df = load_data()
-print(df.isna().sum())
 
