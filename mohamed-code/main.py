@@ -1,11 +1,10 @@
 # main code here
 
 from TreatData import load_data
+from model import model_predict
 
 df = load_data()
 
-# separate between features and target
-features = df.drop(['median_house_value'])
+pred = model_predict(df)
 
-# 
-target = df['median_house_value']
+print(pred)
