@@ -7,6 +7,7 @@ from sklearn.metrics import r2_score
 df = load_data()
 
 def model_predict(df):
+    
     # separate Features and Target
     X = df.drop("median_house_value", axis=1)
     y = df["median_house_value"]    
@@ -23,11 +24,15 @@ def model_predict(df):
     model.fit(X_train, y_train)
 
     y_pred = model.predict(X_test)
+    
+    return y_pred
 
 def model_evaluate_score(y_test, y_pred):
     
     score = r2_score(y_test, y_pred)
-    return score    
+    return score  
+
+
 
 
 
