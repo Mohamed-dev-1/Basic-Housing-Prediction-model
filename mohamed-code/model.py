@@ -1,7 +1,7 @@
 from TreatData import load_data
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
+from sklearn.metrics import r2_score
 
 # load the clean dataframe
 df = load_data()
@@ -20,3 +20,9 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 model = LinearRegression()
 model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+score = r2_score(y_test, y_pred)
+
+print(f"score MSE: {score} ")
